@@ -11,8 +11,8 @@ const emit = defineEmits(["deleteL", "plusL", "moinsL"]);
           mais directement l'id du livre
     -->
     <button @click="$emit('deleteL', livre.id)">Supprimer</button>
-    <button @click="$emit('plusL', livre.qtestock)">+</button>
-    <button @click="$emit('moinsL', livre.qtestock)">-</button>
+    <button @click="$emit('plusL', livre)">+</button>
+    <button @click="$emit('moinsL', livre)">-</button>
   </li>
 </template>
 

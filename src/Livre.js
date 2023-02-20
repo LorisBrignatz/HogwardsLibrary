@@ -20,11 +20,23 @@ export default class Livre {
         return this._prix;
     }
 
-    // modifier la quantite en stock
+    // modifier la quantité en stock
     set qtestock(qtestock) {
         this._qtestock = qtestock;
     }
+    set titre(titre){
+        this._titre = titre;
+    }
+    set prix(prix) {
+        this._prix = prix;
+    }
 
+    LivreIncrementation() {
+        this._qtestock = this._qtestock + 1;
+    }
+    LivreDecrementation(){
+        this._qtestock= this._qtestock - 1;
+    }
     // afficher un livre
     pourAfficher() {
         return `--> ${this._id} ${this._titre} ${this._qtestock} ${this._prix}  `;

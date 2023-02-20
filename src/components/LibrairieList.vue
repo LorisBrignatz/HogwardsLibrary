@@ -10,19 +10,19 @@ const listeL = reactive([]);
 const url = "https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/12/livres";
 
 // -- handler pour modifier un livre à partir de l'index dans la liste
-function handlerQuantite(ch) {
-  console.log(ch);
-  // -- faire la chose
-  ch.faire();
+function handlerQuantitePlus(livre) {
+  console.log(livre);
+  // -- faire la modification
+  livre.LivreIncrementation();
   // -- entête http pour la req AJAX
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  // -- la chose modifiée est envoyé au serveur
+  // -- la quantité modifiée est envoyé au serveur
   //  via le body de la req AJAX
   const fetchOptions = {
     method: "PUT",
     headers: myHeaders,
-    body: JSON.stringify(livre),
+    body: JSON.stringify({"id": livre.id, "titre": livre.titre, "qtestock": livre.qtestock, "prix": livre.prix}),
   };
   // -- la req AJAX
   fetch(url, fetchOptions)
@@ -31,11 +31,42 @@ function handlerQuantite(ch) {
       })
       .then((dataJSON) => {
         console.log(dataJSON);
-        // actualiser la liste des choses
+        // actualiser la liste des livres
         getLivres();
       })
       .catch((error) => console.log(error));
 }
+
+function handlerQuantiteMoins(livre) {
+  console.log(livre);
+  // -- faire la modification
+  livre.LivreDecrementation();
+  // -- entête http pour la req AJAX
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  // -- la quantité modifiée est envoyé au serveur
+  //  via le body de la req AJAX
+  const fetchOptions = {
+    method: "PUT",
+    headers: myHeaders,
+    body: JSON.stringify({"id": livre.id, "titre": livre.titre, "qtestock": livre.qtestock, "prix": livre.prix}),
+  };
+  // -- la req AJAX
+  fetch(url, fetchOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((dataJSON) => {
+        console.log(dataJSON);
+        if (livre.qtestock == 0){
+          handlerDelete(livre.id)
+        }
+        // actualiser la liste des livres
+        getLivres();
+      })
+      .catch((error) => console.log(error));
+}
+
 // -- handle pour supprimer un livre à partir de l'id du livre
 function handlerDelete(id) {
   console.log(id);
@@ -59,7 +90,7 @@ function handlerAdd(titre, qtestock, prix) {
   console.log(titre, qtestock, prix);
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  // --  le titre, la quantite et le prix du nouveau livre est envoyé au serveur
+  // --  le titre, la quantite et le prix du nouveau livre sont envoyés au serveur
   //  via le body de la req AJAX
   const fetchOptions = {
     method: "POST",
@@ -113,6 +144,8 @@ onMounted(() => {
         :key="livre.id"
         :livre="livre"
         @deleteL="handlerDelete"
+        @plusL="handlerQuantitePlus"
+        @moinsL="handlerQuantiteMoins"
     />
   </ul>
 </template>

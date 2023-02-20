@@ -8,9 +8,11 @@ const emit = defineEmits(["addL"]);
 
 <template>
   <form
-      @submit.prevent="$emit('addL', libelle)"
+      @submit.prevent="$emit('addL', titre, qtestock, prix)"
   >
-    <input type="text" v-model="libelle" placeholder="Livre" />
+    <input type="text" v-model="titre" placeholder="Livre" />
+    <input type="number" v-model="qtestock" placeholder="Quantité" min="0" />
+    <input type="number" v-model="prix" placeholder="Prix" min="0" />
     <input type="submit" value="valider" />
   </form>
 </template>
