@@ -64,7 +64,7 @@ button.add-button {
   color: #F9F9F9;
   margin-left: 250px;
   margin-top: 10px;
-  cursor: pointer;
+  cursor: url('/public/Harry_Potter_Wand_Cursor.png'), auto;
   transition: all 0.3s ease-in-out;
 }
 

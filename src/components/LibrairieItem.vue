@@ -99,7 +99,7 @@ const emit = defineEmits(["deleteL", "plusL", "moinsL"]);
   font-size: 20px;
   font-weight: normal;
   text-transform: uppercase;
-  cursor: pointer;
+  cursor: url('/public/Harry_Potter_Wand_Cursor.png'), auto;
   transition: background-color 0.3s ease;
 }
 
@@ -116,7 +116,7 @@ const emit = defineEmits(["deleteL", "plusL", "moinsL"]);
   font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;
-  cursor: pointer;
+  cursor: url('/public/Harry_Potter_Wand_Cursor.png'), auto;
   transition: background-color 0.3s ease;
 }
 .stock-button:hover {

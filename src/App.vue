@@ -1,9 +1,12 @@
-<script setup>
+<script setup xmlns="http://www.w3.org/1999/html">
 import LibrairieHeader from "./components/LibrairieHeader.vue";
 import LibrairieList from "./components/LibrairieList.vue";
 </script>
 
 <template>
+  <audio autoplay loop>
+    <source src="/public/music.mp3" type="audio/mpeg">
+  </audio>
   <LibrairieHeader />
   <LibrairieList />
 </template>
@@ -23,6 +26,7 @@ h3 {
 body {
   background: url('/public/raw.jfif') no-repeat center center fixed;
   background-size: cover;
+  cursor: url('/public/Harry_Potter_Wand_Cursor.png'), auto;
 }
 
 @font-face {

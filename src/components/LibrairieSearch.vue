@@ -51,7 +51,7 @@ button.search-button {
   background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid rgba(14, 13, 13, 0.99);
   color: #F9F9F9;
-  cursor: pointer;
+  cursor: url('/public/Harry_Potter_Wand_Cursor.png'), auto;
   transition: all 0.3s ease-in-out;
 }
 
