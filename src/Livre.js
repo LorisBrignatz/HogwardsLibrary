@@ -1,4 +1,3 @@
-// un livre
 export default class Livre {
     constructor(id, titre, qtestock, prix) {
         this._titre = titre;
@@ -20,7 +19,6 @@ export default class Livre {
         return this._prix;
     }
 
-    // modifier la quantité en stock
     set qtestock(qtestock) {
         this._qtestock = qtestock;
     }
@@ -30,15 +28,13 @@ export default class Livre {
     set prix(prix) {
         this._prix = prix;
     }
-
     LivreIncrementation() {
         this._qtestock = this._qtestock + 1;
     }
     LivreDecrementation(){
         this._qtestock= this._qtestock - 1;
     }
-    // afficher un livre
-    pourAfficher() {
-        return `--> ${this._id} ${this._titre} ${this._qtestock} ${this._prix}  `;
+   pourAfficher() {
+        return `${this._titre} ${this._qtestock} ${this._prix}`;
     }
 }
